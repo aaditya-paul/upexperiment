@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/*! purgecss start ignore */
+@import "prism.css";
+/*! purgecss end ignore */
+
+/*Custom Styles Here*/
+
+    ::-moz-selection { /* Code for Firefox */
+  background-color: #E91E63; /* Pink */
+  color: #ffffff; /* White */
+    }
+    
+    ::selection {
+     background-color: #E91E63; /* Pink */
+  color: #ffffff; /* White */
+    }
