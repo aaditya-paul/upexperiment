@@ -23,8 +23,8 @@ export default function NavbarAlt(props) {
       href: "/about"
     },
     {
-      label: "Archive",
-      href: "/archive"
+      label: "Contact",
+      href: "/contact"
     }
     // {
     //   label: "Contact",

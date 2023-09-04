@@ -1,47 +1,43 @@
 "use client";
 
 import Container from "@/components/container";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
-import useWeb3Forms from "@web3forms/react";
 import {
   MapPinIcon,
   EnvelopeIcon,
   PhoneIcon
 } from "@heroicons/react/24/outline";
+import { useState } from "react";
+
 export default function Contact({ settings }) {
   const {
     register,
     handleSubmit,
     reset,
-    watch,
-    control,
-    setValue,
     formState: { errors, isSubmitSuccessful, isSubmitting }
   } = useForm({
     mode: "onTouched"
   });
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [message, setMessage] = useState(false);
-  // Please update the Access Key in the Sanity CMS - Site Congig Page
-  const apiKey = settings?.w3ckey || "YOUR_ACCESS_KEY_HERE";
 
-  const { submit: onSubmit } = useWeb3Forms({
-    access_key: apiKey,
-    settings: {
-      from_name: "Stablo Template",
-      subject: "New Contact Message from Stablo Website"
-    },
-    onSuccess: (msg, data) => {
-      setIsSuccess(true);
-      setMessage(msg);
-      reset();
-    },
-    onError: (msg, data) => {
-      setIsSuccess(false);
-      setMessage(msg);
-    }
-  });
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const onSubmit = async data => {
+    const values = {
+      name: data.name,
+      email: data.email,
+      message: data.message
+    };
+
+    await fetch("/api/contact", {
+      method: "POST",
+      body: JSON.stringify(values)
+    }).then(res => {
+      if (res.status === 200) {
+        setIsSuccess(true);
+        reset();
+      }
+    });
+  };
 
   return (
     <Container>
@@ -194,12 +190,12 @@ export default function Contact({ settings }) {
 
           {isSubmitSuccessful && isSuccess && (
             <div className="mt-3 text-center text-sm text-green-500">
-              {message || "Success. Message sent successfully"}
+              {"Success. Message sent successfully"}
             </div>
           )}
           {isSubmitSuccessful && !isSuccess && (
             <div className="mt-3 text-center text-sm text-red-500">
-              {message || "Something went wrong. Please try later."}
+              {"Something went wrong. Please try later."}
             </div>
           )}
         </div>

@@ -1,16 +1,30 @@
-
 {
-    "extends": ["next"],
-    "rules": {
-    "react/jsx-no-target-blank": [2, { "allowReferrer": true }],
-    "react/display-name": [0, { "ignoreTranspilerName": false }]
-    },
-    "overrides": [
+  "extends": [
+    "next",
+    "eslint:recommended"
+  ],
+  "rules": {
+    "react/jsx-no-target-blank": [
+      2,
       {
-        "files": ["*.js"],
-        "rules": {
-          "import/no-anonymous-default-export": "off"
-        }
+        "allowReferrer": true
+      }
+    ],
+    "react/display-name": [
+      0,
+      {
+        "ignoreTranspilerName": false
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.js"
+      ],
+      "rules": {
+        "import/no-anonymous-default-export": "off"
+      }
+    }
+  ]
+}
