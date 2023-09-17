@@ -1,12 +1,12 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { Sun, Moon } from "lucide-react";
 
 const ThemeSwitch = () => {
   //   const [mounted, setMounted] = useState(false);
   //   const { resolvedTheme, setTheme } = useTheme();
-  const { theme, setTheme } = useTheme("dark");
+  const { theme, setTheme } = useTheme();
 
   // useEffect only runs on the client, so now we can safely show the UI
   // useEffect(() => {
@@ -16,6 +16,13 @@ const ThemeSwitch = () => {
   // if (!mounted) {
   //   return null;
   // }
+
+  // Initializing themes static value--
+  useEffect(() =>{
+      if(theme !== "dark" && theme !== "light" && theme !== undefined){
+        return setTheme("system")
+      }
+  }, [theme, setTheme])
 
   return (
     <div className="inline-flex items-center">
@@ -31,7 +38,7 @@ const ThemeSwitch = () => {
       </select>
 
       {/* =============================review========================= */}
-      {/* <div className="ml-5 mt-5 lg:ml-0 lg:mt-1">
+      <div className="ml-5 mt-5 lg:ml-0 lg:mt-1">
         <div
           onClick={async () => {
             if (theme === "dark") {
@@ -41,9 +48,9 @@ const ThemeSwitch = () => {
             }
           }}
           className="">
-          {theme === "light" ? <Sun /> : <Moon />}
+          {theme === "light" ? <button className='cursor-pointer'><Sun /></button> : <button className='cursor-pointer'><Moon /></button>}
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
