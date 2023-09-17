@@ -9,18 +9,18 @@ const ThemeSwitch = () => {
   const { theme, setTheme } = useTheme("dark");
 
   // useEffect only runs on the client, so now we can safely show the UI
-  //   useEffect(() => {
-  //     setMounted(true);
-  //   }, []);
+  // useEffect(() => {
+  //   setMounted(true);
+  // }, []);
 
-  //   if (!mounted) {
-  //     return null;
-  //   }
+  // if (!mounted) {
+  //   return null;
+  // }
 
   return (
     <div className="inline-flex items-center">
       {/* <Icon theme={theme} /> */}
-      {/* <select
+      <select
         className=" py-2 pr-2 dark:bg-black dark:text-white"
         name="themeSwitch"
         value={theme}
@@ -28,7 +28,7 @@ const ThemeSwitch = () => {
         <option value="system">System</option>
         <option value="dark">Dark</option>
         <option value="light">Light</option>
-      </select> */}
+      </select>
 
       {/* =============================review========================= */}
       {/* <div className="ml-5 mt-5 lg:ml-0 lg:mt-1">
