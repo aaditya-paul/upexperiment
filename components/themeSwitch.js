@@ -17,8 +17,7 @@ const ThemeSwitch = () => {
   //     return null;
   //   }
 
-  // Initializing the theme static value--
-
+  // Initializing themes static value--
   useEffect(() =>{
       if(theme !== "dark" && theme !== "light" && theme !== undefined){
         return setTheme("system")
