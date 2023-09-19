@@ -18,16 +18,20 @@ const ThemeSwitch = () => {
   // }
 
   // Initializing themes static value--
-  useEffect(() =>{
-      if(theme !== "dark" && theme !== "light" && theme !== undefined){
-        return setTheme("system")
-      }
-  }, [theme, setTheme])
+  useEffect(() => {
+    if (
+      theme !== "dark" &&
+      theme !== "light" &&
+      theme !== undefined
+    ) {
+      return setTheme("system");
+    }
+  }, [theme, setTheme]);
 
   return (
     <div className="inline-flex items-center">
       {/* <Icon theme={theme} /> */}
-      <select
+      {/* <select
         className=" py-2 pr-2 dark:bg-black dark:text-white"
         name="themeSwitch"
         value={theme}
@@ -35,7 +39,7 @@ const ThemeSwitch = () => {
         <option value="system">System</option>
         <option value="dark">Dark</option>
         <option value="light">Light</option>
-      </select>
+      </select> */}
 
       {/* =============================review========================= */}
       <div className="ml-5 mt-5 lg:ml-0 lg:mt-1">
@@ -48,7 +52,15 @@ const ThemeSwitch = () => {
             }
           }}
           className="">
-          {theme === "light" ? <button className='cursor-pointer'><Sun /></button> : <button className='cursor-pointer'><Moon /></button>}
+          {theme === "light" ? (
+            <button className="cursor-pointer">
+              <Sun />
+            </button>
+          ) : (
+            <button className="cursor-pointer">
+              <Moon />
+            </button>
+          )}
         </div>
       </div>
     </div>
